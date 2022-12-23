@@ -1,6 +1,7 @@
 # capacitor-facebook
 
-Facebook sdk plugin for capacitor
+Facebook sdk plugin for capacitor.
+iOS only
 
 ## Install
 
@@ -9,11 +10,71 @@ npm install capacitor-facebook
 npx cap sync
 ```
 
-## API
+# Available methods:
 
-<docgen-index></docgen-index>
+- logEvent(name: string, params?: LogEventParams): Promise<void>;
+- setAdvertiserTracking(enabled: boolean): Promise<void>;
+- getAdvertiserTrackingStatus(): Promise<boolean>;
+- setAutoLogAppEvents(enabled: boolean): Promise<void>;
+- setAdvertiserIDCollection(enabled: boolean): Promise<void>;
 
-<docgen-api>
-<!-- run docgen to generate docs from the source -->
-<!-- More info: https://github.com/ionic-team/capacitor-docgen -->
-</docgen-api>
+# Usage example:
+
+0. Setup your app on facebook developer console and follow the instructions here (except the step 1)
+   https://developers.facebook.com/docs/ios/getting-started
+
+1. In your module (e.g. `app.module.ts`)
+
+```ts
+...
+import { Facebook } from 'capacitor-facebook'
+
+@NgModule({
+	...
+	providers: [
+		...
+		Facebook,
+	],
+})
+export class AppModule {}
+
+```
+
+2. In your component or service (e.g. `analytics.service.ts`)
+
+```ts
+import { Facebook } from 'capacitor-facebook';
+
+@Injectable()
+export class AnalyticsService {
+  constructor(private facebook: Facebook) {}
+
+  async logEvent(name: string, params?: Object) {
+    let _params = {
+       ...params
+      valueToSum: 20,
+    }
+    return this.facebook.logEvent(name, _params);
+  }
+
+  async setAdvertiserTracking(enabled: boolean) {
+    return this.facebook.setAdvertiserTracking(enabled);
+  }
+
+  async getAdvertiserTrackingStatus() {
+    return this.facebook.getAdvertiserTrackingStatus();
+  }
+
+  async setAutoLogAppEvents(enabled: boolean) {
+    return this.facebook.setAutoLogAppEvents(enabled);
+  }
+
+  async setAdvertiserIDCollection(enabled: boolean) {
+    return this.facebook.setAdvertiserIDCollection(enabled);
+  }
+}
+```
+
+```
+
+```
