@@ -30,6 +30,10 @@ export class Facebook {
   async setAdvertiserIDCollection(enabled: boolean) {
     return this.plugin.setAdvertiserIDCollection({ enabled });
   }
+
+  async setAudienceNetworkAdvertiserTracking(enabled: boolean) {
+    return this.plugin.setAudienceNetworkAdvertiserTracking({ enabled });
+  }
 }
 
 export * from './definitions';

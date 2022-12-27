@@ -23,4 +23,8 @@ export class FacebookWeb extends WebPlugin implements FacebookPlugin {
     console.warn('Method not implemented.');
     return Promise.resolve();
   }
+  setAudienceNetworkAdvertiserTracking(_: { enabled: boolean }): Promise<void> {
+    console.warn('Method not implemented.');
+    return Promise.resolve();
+  }
 }

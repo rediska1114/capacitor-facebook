@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target  = '12.0'
   s.dependency 'Capacitor'
   s.dependency 'FBSDKCoreKit', '~> 15.1.0'
+  s.dependency 'FBAudienceNetwork', '~> 6.12.0'
   s.static_framework = true
   s.swift_version = '5.1'
 end

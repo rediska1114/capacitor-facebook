@@ -1,6 +1,7 @@
 import Capacitor
 import FBSDKCoreKit
 import Foundation
+import FBAudienceNetwork
 
 /**
  * Please read the Capacitor iOS Plugin Development Guide
@@ -36,6 +37,15 @@ public class FacebookPlugin: CAPPlugin {
         }
 
         Settings.shared.isAdvertiserTrackingEnabled = enabled
+        call.resolve()
+    }
+
+    @objc func setAudienceNetworkAdvertiserTracking(_ call: CAPPluginCall) {
+        guard let enabled = call.getBool("enabled") else {
+            return call.reject("missing enabled option")
+        }
+
+        ADSettings.setAdvertiserTrackingEnabled(enabled)
         call.resolve()
     }
 

@@ -17,6 +17,7 @@ npx cap sync
 - getAdvertiserTrackingStatus(): Promise<boolean>;
 - setAutoLogAppEvents(enabled: boolean): Promise<void>;
 - setAdvertiserIDCollection(enabled: boolean): Promise<void>;
+- setAudienceNetworkAdvertiserTracking(enabled: boolean): Promise<void>;
 
 # Usage example:
 
@@ -43,11 +44,15 @@ export class AppModule {}
 2. In your component or service (e.g. `analytics.service.ts`)
 
 ```ts
+import {
+	AppTrackingTransparency,
+	AppTrackingTransparencyStatus,
+} from 'capacitor-app-tracking-transparency'
 import { Facebook } from 'capacitor-facebook';
 
 @Injectable()
 export class AnalyticsService {
-  constructor(private facebook: Facebook) {}
+  constructor(private facebook: Facebook, private att: AppTrackingTransparency) {}
 
   async logEvent(name: string, params?: Object) {
     let _params = {
@@ -57,20 +62,19 @@ export class AnalyticsService {
     return this.facebook.logEvent(name, _params);
   }
 
-  async setAdvertiserTracking(enabled: boolean) {
-    return this.facebook.setAdvertiserTracking(enabled);
+  async requestAtt() {
+    const attStatus = await this.att.requestPermission()
+
+    const enabled = attStatus === AppTrackingTransparencyStatus.authorized
+
+    await this.facebook.setAdvertiserTracking(enabled);
+    await this.facebook.setAudienceNetworkAdvertiserTracking(enabled);
+    await this.facebook.setAutoLogAppEvents(enabled);
+    await this.facebook.setAdvertiserIDCollection(enabled);
   }
 
   async getAdvertiserTrackingStatus() {
     return this.facebook.getAdvertiserTrackingStatus();
-  }
-
-  async setAutoLogAppEvents(enabled: boolean) {
-    return this.facebook.setAutoLogAppEvents(enabled);
-  }
-
-  async setAdvertiserIDCollection(enabled: boolean) {
-    return this.facebook.setAdvertiserIDCollection(enabled);
   }
 }
 ```
