@@ -45,7 +45,7 @@ public class FacebookPlugin: CAPPlugin {
             return call.reject("missing enabled option")
         }
 
-        ADSettings.setAdvertiserTrackingEnabled(enabled)
+        FBAdSettings.setAdvertiserTrackingEnabled(enabled)
         call.resolve()
     }
 
