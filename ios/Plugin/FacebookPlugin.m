@@ -10,5 +10,4 @@ CAP_PLUGIN(FacebookPlugin, "Facebook",
             CAP_PLUGIN_METHOD(getAdvertiserTrackingStatus, CAPPluginReturnPromise);
             CAP_PLUGIN_METHOD(setAutoLogAppEvents, CAPPluginReturnPromise);
             CAP_PLUGIN_METHOD(setAdvertiserIDCollection, CAPPluginReturnPromise);
-            CAP_PLUGIN_METHOD(setAudienceNetworkAdvertiserTracking, CAPPluginReturnPromise);
 )
