@@ -79,6 +79,6 @@ export class AnalyticsService {
 }
 ```
 
-```
+## BREAKING CHANGES in 1.x.x
 
-```
+- Add support for capacitor 5
