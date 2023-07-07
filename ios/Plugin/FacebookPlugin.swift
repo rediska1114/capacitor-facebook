@@ -1,5 +1,4 @@
 import Capacitor
-import FBAudienceNetwork
 import FBSDKCoreKit
 import Foundation
 
