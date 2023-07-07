@@ -13,9 +13,7 @@ public class FacebookPlugin: CAPPlugin {
             return call.reject("missing name option")
         }
 
-        guard let params = call.getObject("params") else {
-            return call.reject("missing params option")
-        }
+        let params = call.getObject("params", [:])
 
         let parameters = params.reduce(into: [AppEvents.ParameterName: Any]()) { partialResult, arg1 in
             partialResult[.init(arg1.key)] = arg1.value

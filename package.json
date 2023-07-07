@@ -1,6 +1,6 @@
 {
   "name": "capacitor-facebook",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Facebook sdk plugin for capacitor",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
