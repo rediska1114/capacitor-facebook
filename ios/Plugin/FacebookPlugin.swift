@@ -28,6 +28,11 @@ public class FacebookPlugin: CAPPlugin {
         call.resolve()
     }
 
+    @objc func getAnonymousID(_ call: CAPPluginCall) {
+        let anonymousID = AppEvents.shared.anonymousID
+        call.resolve(["anonymousID": anonymousID])
+    }
+
     @objc func setAdvertiserTracking(_ call: CAPPluginCall) {
         guard let enabled = call.getBool("enabled") else {
             return call.reject("missing enabled option")

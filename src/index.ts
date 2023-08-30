@@ -30,6 +30,12 @@ export class Facebook {
   async setAdvertiserIDCollection(enabled: boolean) {
     return this.plugin.setAdvertiserIDCollection({ enabled });
   }
+
+  async getAnonymousID() {
+    return this.plugin
+      .getAnonymousID()
+      .then(result => result?.anonymousID || null);
+  }
 }
 
 export * from './definitions';

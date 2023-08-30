@@ -18,6 +18,7 @@ npx cap sync
 - setAutoLogAppEvents(enabled: boolean): Promise<void>;
 - setAdvertiserIDCollection(enabled: boolean): Promise<void>;
 - setAudienceNetworkAdvertiserTracking(enabled: boolean): Promise<void>;
+- getAnonymousID(): Promise<string>;
 
 # Usage example:
 
@@ -75,6 +76,11 @@ export class AnalyticsService {
 
   async getAdvertiserTrackingStatus() {
     return this.facebook.getAdvertiserTrackingStatus();
+  }
+
+  async init() {
+    const anonymousId = await this.facebook.getAnonymousID();
+    console.log('anonymousId', anonymousId);
   }
 }
 ```

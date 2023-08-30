@@ -23,4 +23,8 @@ export class FacebookWeb extends WebPlugin implements FacebookPlugin {
     console.warn('Method not implemented.');
     return Promise.resolve();
   }
+  getAnonymousID(){
+    console.warn('Method not implemented.');
+    return Promise.resolve({ anonymousID: '' });
+  }
 }
