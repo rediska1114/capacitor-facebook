@@ -9,7 +9,7 @@ end
 
 target 'Plugin' do
   capacitor_pods
-  pod 'FBSDKCoreKit', '~> 16.1.3'
+  pod 'FBSDKCoreKit', '~> 17.0.1'
 end
 
 target 'PluginTests' do
