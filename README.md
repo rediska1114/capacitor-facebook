@@ -1,7 +1,6 @@
 # capacitor-facebook
 
 Facebook sdk plugin for capacitor.
-iOS only
 
 ## Install
 
